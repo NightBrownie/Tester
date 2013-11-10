@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" MinHeight="450" MinWidth="800">
+             d:DesignHeight="300" d:DesignWidth="300" MinHeight="600" MinWidth="800">
     <Grid VerticalAlignment="Stretch">
         <!--Content of the section-->
-        <ContentControl Margin="30,0,0,0" Name="ActiveItem" />
+        <ContentControl Margin="30,0,5,0" Name="ActiveItem" />
 
         <!--Expander with menu control-->
         <Expander ExpandDirection="Left" HorizontalAlignment="Left" Background="White" BorderBrush="LightGray"
@@ -49,10 +49,10 @@
                 </DockPanel.LayoutTransform>
                 <Label DockPanel.Dock="Top" FontSize="16">Разделы:</Label>
                 <ListBox MinWidth="150" BorderBrush="LightGray" BorderThickness="0,1,0,0"
-                         ItemsSource="{Binding Sections}" SelectedIndex="0">
+                         ItemsSource="{Binding Sections}" SelectedIndex="0" Name="SelectSection">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Label Content="{Binding Name}" ToolTip="{Binding Name}"/>
+                            <Label Content="{Binding Name}" ToolTip="{Binding Description}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
