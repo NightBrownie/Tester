@@ -10,18 +10,50 @@ namespace Tester
 {
     public class RootViewModel : Conductor<object>
     {
+        public List<Section> Sections { get; set; }
+        public Section CurrentSection { get; set; }
+
         public RootViewModel()
         {
-            var t = new Test
+            Sections = new List<Section>();
+
+            var test = new Test()
             {
-                Name = "test test",
-                Questions = {
-                    new Question{Text="Q1"},
-                    new Question{Text="Q2"},
-                    new Question{Text="Q3"},
+                Description = "testing test object",
+                Name = "Test test",
+                Questions = new List<Question>()
+                {
+                    new Question() {
+                        AnswersList = new List<Tuple<string, bool>>()
+                        {
+                            new Tuple<string, bool>("test answer1 true", true),
+                            new Tuple<string, bool>("test answer2 false", false)
+                        }
+                    },
+                    new Question(QuestionType.MultiChoise) {
+                        AnswersList = new List<Tuple<string, bool>>()
+                        {
+                            new Tuple<string, bool>("test answer1 true", true),
+                            new Tuple<string, bool>("test answer2 false", false),
+                            new Tuple<string, bool>("test answer2 false", false),
+                            new Tuple<string, bool>("test answer2 true", true)
+                        }
+                    }
                 }
             };
-            ActivateItem(new TestViewModel(t));
+
+            for (int i = 0; i < 10; ++i)
+            {
+                Sections.Add(new Section()
+                {
+                    Name = "Test Section a lot of text and more " + (i+1),
+                    Test = test,
+                    TheoryText = "some html text"
+                });
+            }
+
+            CurrentSection = Sections.First();
+            
         }
     }
 }

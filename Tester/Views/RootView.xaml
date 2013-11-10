@@ -4,6 +4,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <ContentControl Name="ActiveItem" />
+             d:DesignHeight="300" d:DesignWidth="300" MinHeight="450" MinWidth="800">
+    <Grid VerticalAlignment="Stretch">
+        <!--Content of the section-->
+        <ContentControl Margin="30,0,0,0" Name="ActiveItem" />
+
+        <!--Expander with menu control-->
+        <Expander ExpandDirection="Left" HorizontalAlignment="Left" Background="White" BorderBrush="LightGray"
+                  ToolTip="Откройте меню чтобы выбрать раздел" Name="MenuExpander">
+            <Expander.Header>
+                <TextBlock Margin="0,10,0,0" Text="Разделы" FontSize="16">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="270"></RotateTransform>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <Expander.Triggers>
+                <EventTrigger RoutedEvent="Expander.Expanded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation To="1" Duration="0:0:0.25"
+                                                 Storyboard.TargetName="MainMenuDockPanel"
+                                                 Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(ScaleTransform.ScaleX)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Expander.Collapsed">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation To="0" Duration="0:0:0"
+                                                 Storyboard.TargetName="MainMenuDockPanel"
+                                                 Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(ScaleTransform.ScaleX)"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Expander.Triggers>
+            <DockPanel ToolTip="Выберите раздел для изучения" VerticalAlignment="Stretch" Name="MainMenuDockPanel">
+                <DockPanel.LayoutTransform>
+                    <ScaleTransform ScaleX="0" ScaleY="1"/>
+                </DockPanel.LayoutTransform>
+                <Label DockPanel.Dock="Top" FontSize="16">Разделы:</Label>
+                <ListBox MinWidth="150" BorderBrush="LightGray" BorderThickness="0,1,0,0"
+                         ItemsSource="{Binding Sections}" SelectedIndex="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}" ToolTip="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+        </Expander>
+    </Grid>
 </UserControl>
