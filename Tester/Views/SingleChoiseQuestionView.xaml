@@ -5,7 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+    <DockPanel LastChildFill="True" Margin="20" HorizontalAlignment="Stretch">
+        <TextBlock></TextBlock>
+        <ListView ItemsSource="{Binding AnswersList}" HorizontalAlignment="Stretch" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton GroupName="Question" Content="{Binding AnswerText}" FontSize="16"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
 </UserControl>

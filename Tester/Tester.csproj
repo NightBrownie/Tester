@@ -71,6 +71,7 @@
     <Compile Include="Data\QuestionType.cs" />
     <Compile Include="Data\Section.cs" />
     <Compile Include="Data\Test.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MultiChoiseQuestionViewModel.cs" />
     <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
