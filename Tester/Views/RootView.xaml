@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300" MinHeight="600" MinWidth="800">
     <Grid VerticalAlignment="Stretch">
         <!--Content of the section-->
-        <ContentControl Margin="30,0,5,0" Name="ActiveItem" />
+        <ContentControl Margin="25,0,0,0" Name="ActiveItem" />
 
         <!--Expander with menu control-->
         <Expander ExpandDirection="Left" HorizontalAlignment="Left" Background="White" BorderBrush="LightGray"
