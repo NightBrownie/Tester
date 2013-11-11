@@ -71,17 +71,27 @@
     <Compile Include="Data\QuestionType.cs" />
     <Compile Include="Data\Section.cs" />
     <Compile Include="Data\Test.cs" />
+    <Compile Include="ViewModels\MultiChoiseQuestionViewModel.cs" />
+    <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
+    <Compile Include="ViewModels\SingleChoiseQuestionViewModel.cs" />
+    <Compile Include="ViewModels\TestFinishViewModel.cs" />
     <Compile Include="ViewModels\TestMainViewModel.cs" />
-    <Compile Include="Views\QuestionView.xaml.cs">
-      <DependentUpon>QuestionView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RootBootstrapper.cs" />
+    <Compile Include="Views\MultiChoiseQuestionView.xaml.cs">
+      <DependentUpon>MultiChoiseQuestionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SectionView.xaml.cs">
       <DependentUpon>SectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SingleChoiseQuestionView.xaml.cs">
+      <DependentUpon>SingleChoiseQuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestFinishView.xaml.cs">
+      <DependentUpon>TestFinishView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestMainView.xaml.cs">
       <DependentUpon>TestMainView.xaml</DependentUpon>
@@ -89,7 +99,6 @@
     <Compile Include="Views\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\QuestionViewModel.cs" />
     <Compile Include="ViewModels\RootViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
@@ -124,7 +133,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\QuestionView.xaml">
+    <Page Include="Views\MultiChoiseQuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,11 +145,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TestMainView.xaml">
+    <Page Include="Views\SingleChoiseQuestionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestFinishView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

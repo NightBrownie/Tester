@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Tester.TestView"
+﻿<UserControl x:Class="Tester.Views.TestView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True">
+        <TextBlock FontSize="18" FontWeight="Medium" HorizontalAlignment="Center" DockPanel.Dock="Top"
+                   Visibility="{Binding NextQuestionButtonVisibility}">
+            Вопрос: 
+            <TextBlock Text="{Binding CurrentQuestionNumb}"/>
+            /
+            <TextBlock Text="{Binding QuestionCount}"/>
+        </TextBlock>
         <Button DockPanel.Dock="Bottom" Name="StartTestButton" Content="Начать тест"
                 MinHeight="30" Visibility="{Binding StartTestButtonVisibility}"/>
+        <Button DockPanel.Dock="Bottom" Name="SkipQuestionButton" Content="Ответить на этот вопрос позже"
+                MinHeight="30" Visibility="{Binding NextQuestionButtonVisibility}"/>
         <Button DockPanel.Dock="Bottom" Name="NextQuestionButton" Content="Ответить и перейти к следующему вопросу"
                 MinHeight="30" Visibility="{Binding NextQuestionButtonVisibility}"/>
         <Button DockPanel.Dock="Bottom" Name="ToHomePageButton" Content="К описанию теста"

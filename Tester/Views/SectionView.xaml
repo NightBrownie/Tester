@@ -34,7 +34,7 @@
                 Практика
             </Button>
         </Grid>
-        <Border BorderThickness="3" BorderBrush="{Binding CurrentBorderBrush}" CornerRadius="0, 0, 2, 2">
+        <Border BorderThickness="3" BorderBrush="{Binding CurrentBorderBrush}" CornerRadius="0">
             <ContentControl Name="ActiveItem"/>
         </Border>
     </DockPanel>
