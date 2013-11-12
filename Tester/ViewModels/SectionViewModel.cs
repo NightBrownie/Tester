@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Annotations;
 using System.Windows.Media;
 using Caliburn.Micro;
 using Tester.Data;
@@ -18,6 +20,7 @@ namespace Tester.ViewModels
         private Brush _theorySectionBrush;
         private Brush _testSectionBrush;
         private Brush _practiceSectionBrush;
+        private TestViewModel currentTestViewModel;
 
         public Brush TheorySectionBrush
         {
@@ -63,9 +66,9 @@ namespace Tester.ViewModels
 
         public SectionViewModel(Section section)
         {
-            TheorySectionBrush = new SolidColorBrush(Colors.GreenYellow);
-            TestSectionBrush = new SolidColorBrush(Colors.OrangeRed);
-            PracticeSectionBrush = new SolidColorBrush(Colors.LightSkyBlue);
+            TheorySectionBrush = Brushes.GreenYellow;
+            TestSectionBrush = Brushes.OrangeRed;
+            PracticeSectionBrush = Brushes.LightSkyBlue;
 
             Section = section;
             ShowTheoryButton();
@@ -73,19 +76,45 @@ namespace Tester.ViewModels
 
         public void ShowTheoryButton()
         {
-            //TODO: implements theory viewmodel in near future
-            CurrentBorderBrush = TheorySectionBrush;
+            if (tryExitFromTest())
+            {
+                ActivateItem(new TheoryViewModel());
+                CurrentBorderBrush = TheorySectionBrush;
+            }
         }
 
         public void ShowTestButton()
         {
-            ActivateItem(new TestViewModel(Section.Test));
-            CurrentBorderBrush = TestSectionBrush;
+            if (tryExitFromTest())
+            {
+                currentTestViewModel = new TestViewModel(Section.Test);
+                ActivateItem(currentTestViewModel);
+                CurrentBorderBrush = TestSectionBrush;
+            }
         }
 
         public void ShowPracticeButton()
         {
-            CurrentBorderBrush = PracticeSectionBrush;
+            if (tryExitFromTest())
+            {
+                ActivateItem(new PracticeViewModel());
+                CurrentBorderBrush = PracticeSectionBrush;
+            }
+        }
+
+        private bool tryExitFromTest()
+        {
+            if (currentTestViewModel != null && currentTestViewModel.IsInProgress)
+            {
+                var result = MessageBox.Show("Желаете закончить тест и перейти к другому разделу?", "Оповещение",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+
+                if (result)
+                    currentTestViewModel = null;
+                return result;
+            }
+
+            return true;
         }
     }
 }

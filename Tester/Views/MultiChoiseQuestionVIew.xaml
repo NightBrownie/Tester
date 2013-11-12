@@ -7,13 +7,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True" Margin="20" HorizontalAlignment="Stretch">
         <TextBlock Text="{Binding Question.Text}" DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="16"/>
-        <ListView ItemsSource="{Binding AnswersList}" HorizontalAlignment="Stretch" >
-            <ListView.ItemTemplate>
+        <ItemsControl ItemsSource="{Binding AnswersList}" HorizontalAlignment="Stretch"
+                       BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Padding="5">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <CheckBox Content="{Binding AnswerText}" FontSize="16" 
                               IsChecked="{Binding Path=IsChecked, Mode=TwoWay}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </DockPanel>
 </UserControl>

@@ -79,12 +79,13 @@ namespace Tester.ViewModels
 
         public void StartTestButton()
         {
-            //choose first question
-            ChooseNextQuestion();
-
             CurrentQuestionNumb = 1;
             skippedQuestions.Clear();
             mainQuestionsList.Clear();
+
+            //choose first question
+            ChooseNextQuestion();
+
             StartTestButtonVisibility = Visibility.Collapsed;
             NextQuestionButtonVisibility = Visibility.Visible;
         }
@@ -103,7 +104,14 @@ namespace Tester.ViewModels
                 ChooseNextQuestion();
             else
             {
-                ActivateItem(new TestFinishViewModel());
+                var finishTestVM = new TestFinishViewModel(QuestionCount);
+                
+                foreach (var tuple in mainQuestionsList.Where(q => q.Item2))
+                    finishTestVM.ResultAnswers.Add(new Tuple<string, List<string>>(tuple.Item1.Text,
+                        new List<string>(tuple.Item1.AnswersList.Where(a => a.Item2).Select(a => a.Item1))));
+
+                ActivateItem(finishTestVM);
+
                 ToHomePageButtonVisibility = Visibility.Visible;
                 NextQuestionButtonVisibility = Visibility.Collapsed;
             }

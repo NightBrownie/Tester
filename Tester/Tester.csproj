@@ -37,13 +37,12 @@
     <StartupObject>Tester.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro, Version=1.5.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Caliburn.Micro.dll</HintPath>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>packages\Caliburn.Micro.1.5.2\lib\net45\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity">
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Caliburn.Micro.1.5.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
@@ -73,13 +72,18 @@
     <Compile Include="Data\Test.cs" />
     <Compile Include="ViewModels\MultiChoiseQuestionViewModel.cs" />
     <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
+    <Compile Include="ViewModels\PracticeViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\SingleChoiseQuestionViewModel.cs" />
     <Compile Include="ViewModels\TestFinishViewModel.cs" />
     <Compile Include="ViewModels\TestMainViewModel.cs" />
     <Compile Include="RootBootstrapper.cs" />
+    <Compile Include="ViewModels\TheoryViewModel.cs" />
     <Compile Include="Views\MultiChoiseQuestionView.xaml.cs">
       <DependentUpon>MultiChoiseQuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PracticeView.xaml.cs">
+      <DependentUpon>PracticeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -101,6 +105,9 @@
     </Compile>
     <Compile Include="ViewModels\RootViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
+    <Compile Include="Views\TheoryView.xaml.cs">
+      <DependentUpon>TheoryView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -137,6 +144,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PracticeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RootView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TestMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TheoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
