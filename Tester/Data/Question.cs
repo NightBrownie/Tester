@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
-using Tester.Annotations;
-
 namespace Tester.Data
 {
     public class Question                                                                                              

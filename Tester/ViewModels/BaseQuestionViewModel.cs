@@ -1,64 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
-using Tester.Annotations;
 using Tester.Data;
 
 namespace Tester.ViewModels
 {
     public abstract class BaseQuestionViewModel : Screen
     {
-        //TODO: Implement properties, look at this http://www.galasoft.ch/mydotnet/articles/article-2007041201.aspx
-        public class QuestionTuple : DependencyObject
+        public class AnswerTuple : DependencyObject
         {
-            private string _answerText;
-            private int _questionIndex;
-            private bool _isChecked;
+            public static readonly DependencyProperty IsCheckedProperty;
 
-            public string AnswerText
-            {
-                get { return _answerText; }
-                set
-                {
-                    _answerText = value;
-                    OnPropertyChanged();
-                }
-            }
-
-            public int QuestionIndex
-            {
-                get { return _questionIndex; }
-                set
-                {
-                    _questionIndex = value;
-                    OnPropertyChanged();
-                }
-            }
+            public string AnswerText { get; set; }
+            public int AnswerIndex { get; set; }
 
             public bool IsChecked
             {
-                get { return _isChecked; }
-                set
-                {
-                    _isChecked = value;
-                    OnPropertyChanged();
-                }
+                get { return (bool) GetValue(IsCheckedProperty); }
+                set { SetValue(IsCheckedProperty, value); }
             }
 
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            [NotifyPropertyChangedInvocator]
-            protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+            static AnswerTuple()
             {
-                PropertyChangedEventHandler handler = PropertyChanged;
-                if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+                IsCheckedProperty = DependencyProperty.Register("IsChecked", typeof (bool), typeof (AnswerTuple));
             }
         }
 
@@ -67,30 +33,39 @@ namespace Tester.ViewModels
         public Question Question { get; set; }
 
         //contains pairs <answer text, index in question>
-        public ObservableCollection<QuestionTuple> AnswersList { get; set; } 
+        public ObservableCollection<AnswerTuple> AnswersList { get; set; } 
 
         protected BaseQuestionViewModel(Question question)
         {
             Question = question;
 
-            AnswersList = new ObservableCollection<QuestionTuple>();
+            AnswersList = new ObservableCollection<AnswerTuple>();
 
             while (AnswersList.Count != Question.AnswersList.Count)
             {
                 var newAnswerIndex = rand.Next(Question.AnswersList.Count);
-                while (AnswersList.Select(tuple => tuple.QuestionIndex).Contains(newAnswerIndex))
+                while (AnswersList.Select(tuple => tuple.AnswerIndex).Contains(newAnswerIndex))
                     newAnswerIndex = rand.Next(Question.AnswersList.Count);
 
-                AnswersList.Add(new QuestionTuple() {
+                AnswersList.Add(new AnswerTuple() {
                     AnswerText = Question.AnswersList[newAnswerIndex].Item1,
-                    QuestionIndex = newAnswerIndex,
+                    AnswerIndex = newAnswerIndex,
                     IsChecked = false});
             }
         }
 
         public bool Check()
         {
-            return false;
+            bool result = true;
+
+            foreach (var AnswerTuple in AnswersList)
+            {
+                result &= (AnswerTuple.IsChecked == Question.AnswersList[AnswerTuple.AnswerIndex].Item2);
+                if (!result)
+                    break;
+            }
+
+            return result;
         }
     }
 }
