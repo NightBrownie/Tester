@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Tester.Views
 {
     /// <summary>
-    /// Interaction logic for SingleChoiseQuestionView.xaml
+    /// Interaction logic for MultiChoiseQuestionVIew.xaml
     /// </summary>
-    public partial class SingleChoiseQuestionView : UserControl
+    public partial class MultiChoiceQuestionView : UserControl
     {
-        public SingleChoiseQuestionView()
+        public MultiChoiceQuestionView()
         {
             InitializeComponent();
         }

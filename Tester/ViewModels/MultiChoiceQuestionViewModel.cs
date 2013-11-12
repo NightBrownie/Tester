@@ -8,9 +8,9 @@ using Tester.Data;
 
 namespace Tester.ViewModels
 {
-    public class MultiChoiseQuestionViewModel : BaseQuestionViewModel
+    public class MultiChoiceQuestionViewModel : BaseQuestionViewModel
     {
-        public MultiChoiseQuestionViewModel(Question question) : base(question)
+        public MultiChoiceQuestionViewModel(Question question) : base(question)
         {
         }
     }

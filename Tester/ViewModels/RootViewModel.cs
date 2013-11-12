@@ -37,7 +37,7 @@ namespace Tester
                 Questions = new List<Question>()
                 {
                     new Question() {
-                        Text = "Blablabla Single choise",
+                        Text = "Blablabla Single choice",
                         AnswersList = new List<Tuple<string, bool>>()
                         {
                             new Tuple<string, bool>("test answer1 true", true),
@@ -45,7 +45,7 @@ namespace Tester
                         }
                     },
                     new Question(QuestionType.MultiChoise) {
-                        Text = "Blablabla Multi choise",
+                        Text = "Blablabla Multi choice",
                         AnswersList = new List<Tuple<string, bool>>()
                         {
                             new Tuple<string, bool>("test answer1 true", true),

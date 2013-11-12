@@ -145,9 +145,9 @@ namespace Tester.ViewModels
                     nextQuestionNumber = rand.Next(QuestionCount);
 
             if (Test.Questions[nextQuestionNumber].QuestionType == QuestionType.SingleChoise)
-                currentQuestionViewModel = new SingleChoiseQuestionViewModel(Test.Questions[nextQuestionNumber]);
+                currentQuestionViewModel = new SingleChoiceQuestionViewModel(Test.Questions[nextQuestionNumber]);
             else
-                currentQuestionViewModel = new MultiChoiseQuestionViewModel(Test.Questions[nextQuestionNumber]);
+                currentQuestionViewModel = new MultiChoiceQuestionViewModel(Test.Questions[nextQuestionNumber]);
 
             ActivateItem(currentQuestionViewModel);
         }

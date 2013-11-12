@@ -9,13 +9,12 @@ using Tester.Data;
 
 namespace Tester.ViewModels
 {
-    public class SingleChoiseQuestionViewModel : BaseQuestionViewModel
+    public class SingleChoiceQuestionViewModel : BaseQuestionViewModel
     {
         private int selectedIndex { get; set; }
 
-        public SingleChoiseQuestionViewModel(Question question) : base(question)
+        public SingleChoiceQuestionViewModel(Question question) : base(question)
         {
-            AnswersList.First().IsChecked = true;
         }
     }
 }

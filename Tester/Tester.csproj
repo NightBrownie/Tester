@@ -70,17 +70,17 @@
     <Compile Include="Data\QuestionType.cs" />
     <Compile Include="Data\Section.cs" />
     <Compile Include="Data\Test.cs" />
-    <Compile Include="ViewModels\MultiChoiseQuestionViewModel.cs" />
+    <Compile Include="ViewModels\MultiChoiceQuestionViewModel.cs" />
     <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
     <Compile Include="ViewModels\PracticeViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
-    <Compile Include="ViewModels\SingleChoiseQuestionViewModel.cs" />
+    <Compile Include="ViewModels\SingleChoiceQuestionViewModel.cs" />
     <Compile Include="ViewModels\TestFinishViewModel.cs" />
     <Compile Include="ViewModels\TestMainViewModel.cs" />
     <Compile Include="RootBootstrapper.cs" />
     <Compile Include="ViewModels\TheoryViewModel.cs" />
-    <Compile Include="Views\MultiChoiseQuestionView.xaml.cs">
-      <DependentUpon>MultiChoiseQuestionView.xaml</DependentUpon>
+    <Compile Include="Views\MultiChoiceQuestionView.xaml.cs">
+      <DependentUpon>MultiChoiceQuestionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PracticeView.xaml.cs">
       <DependentUpon>PracticeView.xaml</DependentUpon>
@@ -91,8 +91,8 @@
     <Compile Include="Views\SectionView.xaml.cs">
       <DependentUpon>SectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SingleChoiseQuestionView.xaml.cs">
-      <DependentUpon>SingleChoiseQuestionView.xaml</DependentUpon>
+    <Compile Include="Views\SingleChoiceQuestionView.xaml.cs">
+      <DependentUpon>SingleChoiceQuestionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestFinishView.xaml.cs">
       <DependentUpon>TestFinishView.xaml</DependentUpon>
@@ -140,7 +140,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\MultiChoiseQuestionView.xaml">
+    <Page Include="Views\MultiChoiceQuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SingleChoiseQuestionView.xaml">
+    <Page Include="Views\SingleChoiceQuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
