@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tester
+namespace Tester.Views
 {
     /// <summary>
-    /// Interaction logic for QuestionView.xaml
+    /// Interaction logic for TheoryView.xaml
     /// </summary>
-    public partial class QuestionView : UserControl
+    public partial class TheoryView : UserControl
     {
-        public QuestionView()
+        public TheoryView()
         {
             InitializeComponent();
         }
