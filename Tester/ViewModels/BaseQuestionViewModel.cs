@@ -33,22 +33,22 @@ namespace Tester.ViewModels
         public Question Question { get; set; }
 
         //contains pairs <answer text, index in question>
-        public ObservableCollection<AnswerTuple> AnswersList { get; set; } 
+        public ObservableCollection<AnswerTuple> Answers { get; set; } 
 
         protected BaseQuestionViewModel(Question question)
         {
             Question = question;
 
-            AnswersList = new ObservableCollection<AnswerTuple>();
+            Answers = new ObservableCollection<AnswerTuple>();
 
-            while (AnswersList.Count != Question.AnswersList.Count)
+            while (Answers.Count != Question.Answers.Count)
             {
-                var newAnswerIndex = rand.Next(Question.AnswersList.Count);
-                while (AnswersList.Select(tuple => tuple.AnswerIndex).Contains(newAnswerIndex))
-                    newAnswerIndex = rand.Next(Question.AnswersList.Count);
+                var newAnswerIndex = rand.Next(Question.Answers.Count);
+                while (Answers.Select(tuple => tuple.AnswerIndex).Contains(newAnswerIndex))
+                    newAnswerIndex = rand.Next(Question.Answers.Count);
 
-                AnswersList.Add(new AnswerTuple() {
-                    AnswerText = Question.AnswersList[newAnswerIndex].Item1,
+                Answers.Add(new AnswerTuple() {
+                    AnswerText = Question.Answers[newAnswerIndex].Text,
                     AnswerIndex = newAnswerIndex,
                     IsChecked = false});
             }
@@ -58,9 +58,9 @@ namespace Tester.ViewModels
         {
             bool result = true;
 
-            foreach (var AnswerTuple in AnswersList)
+            foreach (var AnswerTuple in Answers)
             {
-                result &= (AnswerTuple.IsChecked == Question.AnswersList[AnswerTuple.AnswerIndex].Item2);
+                result &= (AnswerTuple.IsChecked == Question.Answers[AnswerTuple.AnswerIndex].Correct);
                 if (!result)
                     break;
             }

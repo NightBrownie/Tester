@@ -21,7 +21,7 @@ namespace Tester.ViewModels
         private Visibility _toHomePageButtonVisibility;
 
         private Random rand = new Random((int)DateTime.Now.Ticks);
-        private int _currentQuestionNumb;
+        private int _currentQuestionNumber;
 
         public Visibility StartTestButtonVisibility
         {
@@ -55,13 +55,13 @@ namespace Tester.ViewModels
 
         public int QuestionCount { get { return Test.Questions.Count; } }
 
-        public int CurrentQuestionNumb
+        public int CurrentQuestionNumber
         {
-            get { return _currentQuestionNumb; }
+            get { return _currentQuestionNumber; }
             set
             {
-                _currentQuestionNumb = value; 
-                NotifyOfPropertyChange(() => CurrentQuestionNumb);
+                _currentQuestionNumber = value; 
+                NotifyOfPropertyChange(() => CurrentQuestionNumber);
             }
         }
         public bool IsInProgress { get { return NextQuestionButtonVisibility == Visibility.Visible; } }
@@ -79,7 +79,7 @@ namespace Tester.ViewModels
 
         public void StartTestButton()
         {
-            CurrentQuestionNumb = 1;
+            CurrentQuestionNumber = 1;
             skippedQuestions.Clear();
             mainQuestionsList.Clear();
 
@@ -99,7 +99,7 @@ namespace Tester.ViewModels
             skippedQuestions.Remove(Test.Questions.IndexOf(currentQuestionViewModel.Question));
 
             //increment question Numb
-            CurrentQuestionNumb++;
+            CurrentQuestionNumber++;
             if (mainQuestionsList.Count < QuestionCount)
                 ChooseNextQuestion();
             else
@@ -108,7 +108,7 @@ namespace Tester.ViewModels
                 
                 foreach (var tuple in mainQuestionsList.Where(q => q.Item2))
                     finishTestVM.ResultAnswers.Add(new Tuple<string, List<string>>(tuple.Item1.Text,
-                        new List<string>(tuple.Item1.AnswersList.Where(a => a.Item2).Select(a => a.Item1))));
+                        new List<string>(tuple.Item1.Answers.Where(a => a.Correct).Select(a => a.Text))));
 
                 ActivateItem(finishTestVM);
 
@@ -144,7 +144,7 @@ namespace Tester.ViewModels
                 while (mainQuestionsList.Select(tuple => tuple.Item1).Contains(Test.Questions[nextQuestionNumber]))
                     nextQuestionNumber = rand.Next(QuestionCount);
 
-            if (Test.Questions[nextQuestionNumber].QuestionType == QuestionType.SingleChoise)
+            if (Test.Questions[nextQuestionNumber].Type == QuestionType.SingleChoice)
                 currentQuestionViewModel = new SingleChoiceQuestionViewModel(Test.Questions[nextQuestionNumber]);
             else
                 currentQuestionViewModel = new MultiChoiceQuestionViewModel(Test.Questions[nextQuestionNumber]);

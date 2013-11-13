@@ -1,22 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 namespace Tester.Data
 {
-    public class Question                                                                                              
+    [DataContract]
+    public class Question
     {
+        [DataMember]
         public string Text { get; set; }
-        public QuestionType QuestionType { get; set; }
+
+        [DataMember]
+        public QuestionType Type { get; set; }
 
         /// <summary>
         /// Each answer is a tuple, first item in tuple is a answer text
         /// second item is bool flat to show is it right answer for current question
         /// </summary>
-        public List<Tuple<string, bool>> AnswersList;
+        [DataMember]
+        public List<Answer> Answers;
 
-        public Question(QuestionType questionType = QuestionType.SingleChoise)
+        public Question(QuestionType type = QuestionType.SingleChoice)
         {
-            AnswersList = new List<Tuple<string, bool>>();
-            QuestionType = questionType;
+            Answers = new List<Answer>();
+            Type = type;
         }
     }
 }
