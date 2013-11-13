@@ -4,14 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" MinHeight="450" MinWidth="800">
-    <Grid VerticalAlignment="Stretch">
-        <!--Content of the section-->
-        <ContentControl Margin="25,0,0,0" Name="ActiveItem" />
-
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel VerticalAlignment="Stretch" LastChildFill="True">
         <!--Expander with menu control-->
         <Expander ExpandDirection="right" HorizontalAlignment="Left" Background="White" BorderBrush="LightGray"
-                  ToolTip="Откройте меню чтобы выбрать раздел" Name="MenuExpander">
+                  ToolTip="Откройте меню чтобы выбрать раздел" Name="MenuExpander" DockPanel.Dock="Left">
             <Expander.Header>
                 <TextBlock Margin="0,10,0,0" Text="Разделы" FontSize="16">
                     <TextBlock.LayoutTransform>
@@ -58,5 +55,10 @@
                 </ListBox>
             </DockPanel>
         </Expander>
-    </Grid>
+        
+        <!--Content of the section-->
+        <Grid Name="Content">
+            <ContentControl Margin="25,0,0,0" Name="ActiveItem" />
+        </Grid>
+    </DockPanel>
 </UserControl>

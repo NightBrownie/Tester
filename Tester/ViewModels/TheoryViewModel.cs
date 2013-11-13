@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -21,7 +22,8 @@ namespace Tester.ViewModels
 
         protected override void OnViewLoaded(object view)
         {
-            (view as TheoryView).Browser.Navigate("file:///" + Path.Combine(Environment.CurrentDirectory, "Content", Section.TheoryPath));
+            (view as TheoryView).Browser.Navigate("file:///" + Path.Combine(Environment.CurrentDirectory,
+                "Content", Section.TheoryPath));
         }
     }
 }

@@ -44,6 +44,7 @@
       <HintPath>packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -70,12 +71,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppWindowManager.cs" />
     <Compile Include="Data\Answer.cs" />
     <Compile Include="Data\AppContent.cs" />
     <Compile Include="Data\Question.cs" />
     <Compile Include="Data\QuestionType.cs" />
     <Compile Include="Data\Section.cs" />
     <Compile Include="Data\Test.cs" />
+    <Compile Include="MainWindowContainer.xaml.cs">
+      <DependentUpon>MainWindowContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MultiChoiceQuestionViewModel.cs" />
     <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
     <Compile Include="ViewModels\PracticeViewModel.cs" />
@@ -148,6 +153,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MainWindowContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MultiChoiceQuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
