@@ -17,7 +17,7 @@ namespace Tester
 
         public RootViewModel()
         {
-            DisplayName = "Обучающая программа по дисциплине ...";
+            DisplayName = "Обучающая программа по дисциплине " + App.Instance.Content.CourseName;
             Sections = new List<Section>();
             LoadModel();
             ActivateItem(new SectionViewModel(Sections.First()));
@@ -30,43 +30,7 @@ namespace Tester
 
         private void LoadModel()
         {
-            var test = new Test()
-            {
-                Description = "testing test object",
-                Name = "Test test",
-                Questions = new List<Question>()
-                {
-                    new Question() {
-                        Text = "Blablabla Single choice",
-                        AnswersList = new List<Tuple<string, bool>>()
-                        {
-                            new Tuple<string, bool>("test answer1 true", true),
-                            new Tuple<string, bool>("test answer2 false", false)
-                        }
-                    },
-                    new Question(QuestionType.MultiChoise) {
-                        Text = "Blablabla Multi choice",
-                        AnswersList = new List<Tuple<string, bool>>()
-                        {
-                            new Tuple<string, bool>("test answer1 true", true),
-                            new Tuple<string, bool>("test answer2 false", false),
-                            new Tuple<string, bool>("test answer2 false", false),
-                            new Tuple<string, bool>("test answer2 true", true)
-                        }
-                    }
-                }
-            };
-
-            for (int i = 0; i < 10; ++i)
-            {
-                Sections.Add(new Section()
-                {
-                    Name = "Test Section a lot of text and more " + (i + 1),
-                    Description = "Test Section a lot of text and more " + (i + 1),
-                    Test = test,
-                    TheoryText = "some html text"
-                });
-            }
+            Sections = App.Instance.Content.Sections;
         }
     }
 }

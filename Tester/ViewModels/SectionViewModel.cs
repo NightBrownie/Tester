@@ -78,7 +78,7 @@ namespace Tester.ViewModels
         {
             if (tryExitFromTest())
             {
-                ActivateItem(new TheoryViewModel());
+                ActivateItem(new TheoryViewModel(Section));
                 CurrentBorderBrush = TheorySectionBrush;
             }
         }
