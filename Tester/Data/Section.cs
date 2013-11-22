@@ -21,5 +21,8 @@ namespace Tester.Data
         
         [DataMember]
         public Test Test { get; set; }
+
+        [DataMember]
+        public Crossword PracticeCrossword { get; set; }
     }
 }
