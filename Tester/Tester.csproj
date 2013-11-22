@@ -74,6 +74,7 @@
     <Compile Include="AppWindowManager.cs" />
     <Compile Include="Data\Answer.cs" />
     <Compile Include="Data\AppContent.cs" />
+    <Compile Include="Data\Crossword.cs" />
     <Compile Include="Data\Question.cs" />
     <Compile Include="Data\QuestionType.cs" />
     <Compile Include="Data\Section.cs" />
@@ -83,7 +84,7 @@
     </Compile>
     <Compile Include="ViewModels\MultiChoiceQuestionViewModel.cs" />
     <Compile Include="ViewModels\BaseQuestionViewModel.cs" />
-    <Compile Include="ViewModels\PracticeViewModel.cs" />
+    <Compile Include="ViewModels\PracticeCrosswordViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\SingleChoiceQuestionViewModel.cs" />
     <Compile Include="ViewModels\TestFinishViewModel.cs" />
@@ -93,8 +94,8 @@
     <Compile Include="Views\MultiChoiceQuestionView.xaml.cs">
       <DependentUpon>MultiChoiceQuestionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PracticeView.xaml.cs">
-      <DependentUpon>PracticeView.xaml</DependentUpon>
+    <Compile Include="Views\PracticeCrosswordView.xaml.cs">
+      <DependentUpon>PracticeCrosswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -161,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PracticeView.xaml">
+    <Page Include="Views\PracticeCrosswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

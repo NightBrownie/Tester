@@ -97,7 +97,10 @@ namespace Tester.ViewModels
         {
             if (tryExitFromTest())
             {
-                ActivateItem(new PracticeViewModel());
+                if (Section.PracticeCrossword != null)
+                {
+                    ActivateItem(new PracticeCrosswordViewModel(Section.PracticeCrossword));
+                }
                 CurrentBorderBrush = PracticeSectionBrush;
             }
         }
