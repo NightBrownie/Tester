@@ -56,6 +56,9 @@ namespace Tester.Views
                         Container.Children.Add(box);
                         Canvas.SetLeft(box, 50 + x * 40);
                         Canvas.SetTop(box, 50 + y * 40);
+
+                        Container.Width = Math.Max(Container.Width, Canvas.GetLeft(box) + 100);
+                        Container.Height = Math.Max(Container.Height, Canvas.GetTop(box) + 100);
                         boxes[x, y] = box;
                     }
                     else
