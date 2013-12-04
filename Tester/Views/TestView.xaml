@@ -15,8 +15,8 @@
         </TextBlock>
         <Button DockPanel.Dock="Bottom" Name="StartTestButton" Content="Начать тест"
                 MinHeight="30" Visibility="{Binding StartTestButtonVisibility}"/>
-        <Button DockPanel.Dock="Bottom" Name="SkipQuestionButton" Content="Ответить на этот вопрос позже"
-                MinHeight="30" Visibility="{Binding NextQuestionButtonVisibility}"/>
+        <Button DockPanel.Dock="Bottom" Name="SkipQuestionButton" Content="{Binding SkipQuestionButtonText}"
+                MinHeight="30" Visibility="{Binding NextQuestionButtonVisibility}" IsEnabled="{Binding IsSkipButtonEnabled}"/>
         <Button DockPanel.Dock="Bottom" Name="NextQuestionButton" Content="Ответить и перейти к следующему вопросу"
                 MinHeight="30" Visibility="{Binding NextQuestionButtonVisibility}"/>
         <Button DockPanel.Dock="Bottom" Name="ToHomePageButton" Content="К описанию теста"

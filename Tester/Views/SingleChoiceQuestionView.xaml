@@ -6,7 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True" Margin="20" HorizontalAlignment="Stretch">
-        <TextBlock Text="{Binding Question.Text}" DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="16"/>
+        <TextBlock Text="{Binding Question.Text}" DockPanel.Dock="Top" HorizontalAlignment="Center"
+                   FontSize="16" TextWrapping="Wrap"/>
         <ItemsControl ItemsSource="{Binding Answers}" HorizontalAlignment="Stretch"
                       BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Padding="5">
             <ItemsControl.ItemTemplate>

@@ -68,6 +68,18 @@ namespace Tester.ViewModels
             }
         }
 
+        //shows message and max question count in button
+        public string SkipQuestionButtonText
+        {
+            get
+            {
+                return "Ответить на этот вопрос позже"
+                       + ((Test.MaxSkippedQuestions != 0)
+                           ? ("(" + (Test.MaxSkippedQuestions - _skippedQuestionsCount) + ")")
+                           : String.Empty);
+            }
+        }
+
         public bool IsSkipButtonEnabled
         {
             get { return _isSkipButtonEnabled; }
@@ -96,6 +108,7 @@ namespace Tester.ViewModels
             CurrentQuestionNumber = 1;
             _failedQuestionsCount = 0;
             _skippedQuestionsCount = 0;
+            NotifyOfPropertyChange(() => SkipQuestionButtonText);
 
             skippedQuestions.Clear();
             mainQuestionsList.Clear();
@@ -130,7 +143,7 @@ namespace Tester.ViewModels
                 ChooseNextQuestion();
             else
             {
-                var finishTestVM = new TestFinishViewModel(QuestionCount);
+                var finishTestVM = new TestFinishViewModel(QuestionCount, Test.MaxFailAnswers != 0);
                 
                 foreach (var tuple in mainQuestionsList.Where(q => q.Item2))
                     finishTestVM.ResultAnswers.Add(new Tuple<string, List<string>>(tuple.Item1.Text,
@@ -146,6 +159,7 @@ namespace Tester.ViewModels
         public void SkipQuestionButton()
         {
             ++_skippedQuestionsCount;
+            NotifyOfPropertyChange(() => SkipQuestionButtonText);
             if (Test.MaxSkippedQuestions != 0 
                 && _skippedQuestionsCount == Test.MaxSkippedQuestions)
                 IsSkipButtonEnabled = false;

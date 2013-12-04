@@ -7,11 +7,15 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel LastChildFill="True">
         <TextBlock FontSize="18" HorizontalAlignment="Center" DockPanel.Dock="Top">
-            <TextBlock FontWeight="Medium">Результаты теста:</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Foreground="{Binding ResultColorBrush}">
-                <TextBlock Text="{Binding ResultAnswers.Count}"/>
-                /
-                <TextBlock Text="{Binding QuestionCount}"/>
+            <TextBlock TextAlignment="Center">
+                <TextBlock Text="{Binding TestResultMessage}" Foreground="{Binding ResultColorBrush}"/>
+                <LineBreak/>
+                <TextBlock FontWeight="Medium">Результаты теста:</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="{Binding ResultColorBrush}">
+                    <TextBlock Text="{Binding ResultAnswers.Count}"/>
+                    /
+                    <TextBlock Text="{Binding QuestionCount}"/>
+                </TextBlock>
             </TextBlock>
         </TextBlock>
         <ItemsControl ItemsSource="{Binding ResultAnswers}" HorizontalContentAlignment="Center" DockPanel.Dock="Top"

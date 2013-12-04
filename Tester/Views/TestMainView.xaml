@@ -15,6 +15,12 @@
             <LineBreak/>
             <TextBlock Foreground="DarkGreen">Количество вопросов:</TextBlock>
             <TextBlock Foreground="Green" Text="{Binding Test.Questions.Count}"></TextBlock>
+            <LineBreak/>
+            <LineBreak/>
+            <TextBlock Visibility="{Binding MaxFailQuestionCountVisibility}">
+                Максимальное количество неправильных ответов:</TextBlock>
+            <TextBlock Text="{Binding Test.MaxFailAnswers}" Visibility="{Binding MaxFailQuestionCountVisibility}">
+            </TextBlock>
         </TextBlock>
     </Grid>
 </UserControl>
