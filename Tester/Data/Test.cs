@@ -7,6 +7,11 @@ namespace Tester.Data
     public class Test
     {
         [DataMember]
+        public int MaxSkippedQuestions { get; set; }
+
+        public int MaxFailAnswers { get; set; }
+
+        [DataMember]
         public string Name { get; set; }
         
         [DataMember]

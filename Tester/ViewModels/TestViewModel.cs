@@ -22,6 +22,9 @@ namespace Tester.ViewModels
 
         private Random rand = new Random((int)DateTime.Now.Ticks);
         private int _currentQuestionNumber;
+        private int _skippedQuestionsCount;
+        private int _failedQuestionsCount;
+        private bool _isSkipButtonEnabled;
 
         public Visibility StartTestButtonVisibility
         {
@@ -64,6 +67,17 @@ namespace Tester.ViewModels
                 NotifyOfPropertyChange(() => CurrentQuestionNumber);
             }
         }
+
+        public bool IsSkipButtonEnabled
+        {
+            get { return _isSkipButtonEnabled; }
+            set
+            {
+                _isSkipButtonEnabled = value; 
+                NotifyOfPropertyChange(() => IsSkipButtonEnabled);
+            }
+        }
+
         public bool IsInProgress { get { return NextQuestionButtonVisibility == Visibility.Visible; } }
 
         public TestViewModel(Test test)
@@ -80,6 +94,9 @@ namespace Tester.ViewModels
         public void StartTestButton()
         {
             CurrentQuestionNumber = 1;
+            _failedQuestionsCount = 0;
+            _skippedQuestionsCount = 0;
+
             skippedQuestions.Clear();
             mainQuestionsList.Clear();
 
@@ -88,6 +105,7 @@ namespace Tester.ViewModels
 
             StartTestButtonVisibility = Visibility.Collapsed;
             NextQuestionButtonVisibility = Visibility.Visible;
+            IsSkipButtonEnabled = true;
         }
 
         public void NextQuestionButton()
@@ -95,12 +113,20 @@ namespace Tester.ViewModels
             //add index to completed 
             mainQuestionsList.Add(new Tuple<Question, bool>(currentQuestionViewModel.Question,
                 currentQuestionViewModel.Check()));
+
+            if (!currentQuestionViewModel.Check())
+                ++_failedQuestionsCount;
+
             //remove item from skipped if it
             skippedQuestions.Remove(Test.Questions.IndexOf(currentQuestionViewModel.Question));
 
             //increment question Numb
             CurrentQuestionNumber++;
-            if (mainQuestionsList.Count < QuestionCount)
+
+            //checks for questions count
+            //also checks if max fail answers property is setted, if it then checks for max fail answers
+            if ((mainQuestionsList.Count < QuestionCount)
+                && (Test.MaxFailAnswers == 0 || _failedQuestionsCount < Test.MaxFailAnswers))
                 ChooseNextQuestion();
             else
             {
@@ -119,6 +145,11 @@ namespace Tester.ViewModels
 
         public void SkipQuestionButton()
         {
+            ++_skippedQuestionsCount;
+            if (Test.MaxSkippedQuestions != 0 
+                && _skippedQuestionsCount == Test.MaxSkippedQuestions)
+                IsSkipButtonEnabled = false;
+
             skippedQuestions.Add(Test.Questions.IndexOf(currentQuestionViewModel.Question));
             ChooseNextQuestion();
         }
