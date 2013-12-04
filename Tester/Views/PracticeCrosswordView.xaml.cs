@@ -46,15 +46,19 @@ namespace Tester.Views
                     {
                         box = new TextBox
                         {
-                            Width = 30,
-                            Height = 30,
-                            FontSize = 20,
+                            Width = 25,
+                            Height = 25,
+                            FontSize = 14,
+                            VerticalContentAlignment = VerticalAlignment.Center,
                             TextAlignment = TextAlignment.Center,
                         };
                         box.KeyUp += box_KeyUp;
                         Container.Children.Add(box);
-                        Canvas.SetLeft(box, 50 + x * 40);
-                        Canvas.SetTop(box, 50 + y * 40);
+                        Canvas.SetLeft(box, x * 27);
+                        Canvas.SetTop(box, 20 + y * 27);
+
+                        Container.Width = Math.Max(Container.Width, Canvas.GetLeft(box) + 50);
+                        Container.Height = Math.Max(Container.Height, Canvas.GetTop(box) + 50);
                         boxes[x, y] = box;
                     }
                     else
@@ -66,7 +70,7 @@ namespace Tester.Views
 
                     if (i == 0)
                     {
-                        box.BorderThickness = new Thickness(3);
+                        box.BorderThickness = new Thickness(1);
                         box.ToolTip = word.Hint;
                     }
                 }
@@ -95,6 +99,10 @@ namespace Tester.Views
                 box.Text = box.Text.Substring(box.Text.Length - 1).ToUpper();
             box.SelectAll();
             UpdateState();
+            for (int y = 0; y < boxes.GetLength(0); y++)
+                for (int x = 0; x < boxes.GetLength(0) - 1; x++)
+                    if (boxes[x, y] == box && boxes[x + 1, y] != null)
+                        boxes[x + 1, y].Focus();
         }
     }
 }
