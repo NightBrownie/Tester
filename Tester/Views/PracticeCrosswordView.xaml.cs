@@ -49,6 +49,7 @@ namespace Tester.Views
                             Width = 30,
                             Height = 30,
                             FontSize = 20,
+                            VerticalContentAlignment = VerticalAlignment.Center,
                             TextAlignment = TextAlignment.Center,
                         };
                         box.KeyUp += box_KeyUp;
@@ -95,6 +96,10 @@ namespace Tester.Views
                 box.Text = box.Text.Substring(box.Text.Length - 1).ToUpper();
             box.SelectAll();
             UpdateState();
+            for (int y = 0; y < boxes.GetLength(0); y++)
+                for (int x = 0; x < boxes.GetLength(0) - 1; x++)
+                    if (boxes[x, y] == box && boxes[x + 1, y] != null)
+                        boxes[x + 1, y].Focus();
         }
     }
 }
