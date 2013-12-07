@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             
             <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding Section.Name}" FontSize="24" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="{Binding Section.Name}" FontSize="24" FontWeight="Bold" TextWrapping="Wrap"/>
             </TextBlock>
 
             <Button Grid.Column="0" Grid.Row="1" Name="ShowTheoryButton" Background="{Binding TheorySectionBrush}" 

@@ -12,8 +12,9 @@
                       BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Padding="5">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton GroupName="Question" Content="{Binding AnswerText}" FontSize="16" 
-                                 IsChecked="{Binding Path=IsChecked, Mode=TwoWay}"/>
+                    <RadioButton GroupName="Question" FontSize="16" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}">
+                        <TextBlock Text="{Binding AnswerText}" TextWrapping="Wrap"/>
+                    </RadioButton>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

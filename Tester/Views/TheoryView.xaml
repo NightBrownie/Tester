@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="True">
-        <WebBrowser Name="Browser" />
+        <WebBrowser Name="Browser"  />
     </DockPanel>
 </UserControl>

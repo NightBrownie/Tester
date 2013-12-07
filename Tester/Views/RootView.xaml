@@ -49,7 +49,9 @@
                          ItemsSource="{Binding Sections}" SelectedIndex="0" Name="SelectSection">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Label Content="{Binding Name}" ToolTip="{Binding Description}"/>
+                            <Label ToolTip="{Binding Description}" MaxWidth="150">
+                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+                            </Label>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

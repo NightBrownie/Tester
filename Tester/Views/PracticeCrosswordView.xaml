@@ -14,7 +14,7 @@
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding}" Width="500" TextWrapping='Wrap' />
+                                    <TextBlock Text="{Binding}" MaxWidth="500" TextWrapping='Wrap' />
                                 </StackPanel>
                             </DataTemplate>
                         </Setter.Value>
