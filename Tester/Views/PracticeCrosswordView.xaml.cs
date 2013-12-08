@@ -158,13 +158,31 @@ namespace Tester.Views
                 if (boxes[xCoord + 1, yCoord] != null && !isPrevVertical)
                     boxes[xCoord + 1, yCoord].Focus();
             }
-            else if (e.Key == Key.Back)
-            {
-                if (boxes[xCoord, yCoord - 1] != null && isPrevVertical)
-                    boxes[xCoord, yCoord - 1].Focus();
-                if (boxes[xCoord - 1, yCoord] != null && !isPrevVertical)
-                    boxes[xCoord - 1, yCoord].Focus();
-            }
+            else switch (e.Key)
+                {
+                    case Key.Back:
+                        if (boxes[xCoord, yCoord - 1] != null && isPrevVertical)
+                            boxes[xCoord, yCoord - 1].Focus();
+                        if (boxes[xCoord - 1, yCoord] != null && !isPrevVertical)
+                            boxes[xCoord - 1, yCoord].Focus();
+                        break;
+                    case Key.Left:
+                        if (boxes[xCoord - 1, yCoord] != null)
+                            boxes[xCoord - 1, yCoord].Focus();
+                        break;
+                    case Key.Right:
+                        if (boxes[xCoord + 1, yCoord] != null)
+                            boxes[xCoord + 1, yCoord].Focus();
+                        break;
+                    case Key.Down:
+                        if (boxes[xCoord, yCoord + 1] != null)
+                            boxes[xCoord, yCoord + 1].Focus();
+                        break;
+                    case Key.Up:
+                        if (boxes[xCoord, yCoord - 1] != null)
+                            boxes[xCoord, yCoord - 1].Focus();
+                        break;
+                }
         }
     }
 }

@@ -28,12 +28,12 @@
                         <ItemsControl Padding="15, 0, 0, 0" ItemsSource="{Binding Item2}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Canvas VerticalAlignment="Center">
+                                    <DockPanel LastChildFill="True">
+                                        <Canvas VerticalAlignment="Center" DockPanel.Dock="Left">
                                             <Ellipse Fill="DarkGreen" Height="5" Width="5"></Ellipse>
                                         </Canvas>
-                                        <TextBlock FontSize="16" Text="{Binding}" Foreground="Green" Padding="10, 0, 0, 0"/>
-                                    </StackPanel>
+                                        <TextBlock FontSize="16" Text="{Binding}" Foreground="Green" Padding="10, 0, 0, 0" TextWrapping="Wrap"/>
+                                    </DockPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
