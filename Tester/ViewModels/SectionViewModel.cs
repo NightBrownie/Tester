@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows;
 using System.Windows.Annotations;
 using System.Windows.Media;
@@ -28,7 +28,7 @@ namespace Tester.ViewModels
             set
             {
                 _theorySectionBrush = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("TheorySectionBrush"));
+                NotifyOfPropertyChange(("TheorySectionBrush"));
             }
         }
 
@@ -38,7 +38,7 @@ namespace Tester.ViewModels
             set
             {
                 _testSectionBrush = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("TestSectionBrush"));
+                NotifyOfPropertyChange(("TestSectionBrush"));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Tester.ViewModels
             set
             {
                 _practiceSectionBrush = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("PracticeSectionBrush"));
+                NotifyOfPropertyChange(("PracticeSectionBrush"));
             }
         }
 
@@ -60,7 +60,7 @@ namespace Tester.ViewModels
             set
             {
                 _currentBorderBrush = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("CurrentBorderBrush"));
+                NotifyOfPropertyChange(("CurrentBorderBrush"));
             }
         }
 

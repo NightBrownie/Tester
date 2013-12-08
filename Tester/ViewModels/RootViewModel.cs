@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using Tester.Data;
 using Tester.ViewModels;
 
@@ -32,6 +32,7 @@ namespace Tester
         private void LoadModel()
         {
             Sections = App.Instance.Content.Sections;
+            Sections.Sort((a, b) => a.Name.CompareTo(b.Name));
         }
     }
 }

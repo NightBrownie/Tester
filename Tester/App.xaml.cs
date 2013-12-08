@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using Tester.Data;
 
@@ -21,6 +21,8 @@ namespace Tester
         public App()
         {
             Instance = this;
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+                Environment.Exit(1);
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -46,14 +48,14 @@ namespace Tester
                 {
                     if (question.Type == QuestionType.SingleChoice)
                         if (question.Answers.Where(a => a.Correct).Count() > 1)
-                            if (MessageBox.Show("Error in test sources.", "Error in sources.", MessageBoxButton.OK,
+                            if (MessageBox.Show(question.Text, "Error in sources.", MessageBoxButton.OK,
                                 MessageBoxImage.Error) == MessageBoxResult.OK)
                                 Current.Shutdown(1);
-                    else
-                        if (question.Answers.Where(a => a.Correct).Count() == 0)
-                            if (MessageBox.Show("Error in test sources.", "Error in sources.", MessageBoxButton.OK,
-                                MessageBoxImage.Error) == MessageBoxResult.OK)
-                                Current.Shutdown();
+                            else
+                                if (question.Answers.Where(a => a.Correct).Count() == 0)
+                                    if (MessageBox.Show(question.Text, "Error in sources.", MessageBoxButton.OK,
+                                        MessageBoxImage.Error) == MessageBoxResult.OK)
+                                        Current.Shutdown();
                 }
             }
         }

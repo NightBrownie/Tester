@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using Caliburn.Micro;
 using Tester.Data;
 using Tester.Views;
@@ -21,8 +21,8 @@ namespace Tester.ViewModels
 
         protected override void OnViewLoaded(object view)
         {
-            (view as PracticeTextView).Browser.Navigate("file:///"
-                + MhtHelper.GetMhtFilePath(Section.PracticeCrossword.Words.First().Value));
+            (view as PracticeTextView).Browser.Navigate(new Uri("file:///"
+                + MhtHelper.GetMhtFilePath(Section.PracticeCrossword.Words.First().Value)));
         }
     }
 }
