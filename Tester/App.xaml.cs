@@ -28,6 +28,7 @@ namespace Tester
             try
             {
                 Content = AppContent.Load();
+                checkContent();
             }
             catch (Exception exc)
             {
@@ -35,6 +36,26 @@ namespace Tester
                 Environment.Exit(0);
             }
             base.OnStartup(e);
+        }
+
+        private void checkContent()
+        {
+            foreach (var section in Content.Sections)
+            {
+                foreach (var question in section.Test.Questions)
+                {
+                    if (question.Type == QuestionType.SingleChoice)
+                        if (question.Answers.Where(a => a.Correct).Count() > 1)
+                            if (MessageBox.Show("Error in test sources.", "Error in sources.", MessageBoxButton.OK,
+                                MessageBoxImage.Error) == MessageBoxResult.OK)
+                                Current.Shutdown(1);
+                    else
+                        if (question.Answers.Where(a => a.Correct).Count() == 0)
+                            if (MessageBox.Show("Error in test sources.", "Error in sources.", MessageBoxButton.OK,
+                                MessageBoxImage.Error) == MessageBoxResult.OK)
+                                Current.Shutdown();
+                }
+            }
         }
     }
 }
