@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Reflection;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Tester.Data
 {
@@ -19,9 +21,12 @@ namespace Tester.Data
         [DataMember]
         public List<Section> Sections;
 
-        public static AppContent Load(string path)
+        public static AppContent Load()
         {
-            return JsonConvert.DeserializeObject<AppContent>(File.ReadAllText(path));
+            TextReader tr = new StreamReader(Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream(ConfigurationSettings.AppSettings.Get("ResourcesPath") + "appdata.json"));
+
+            return JsonConvert.DeserializeObject<AppContent>(tr.ReadToEnd());
         }
     }
 }

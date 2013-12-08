@@ -76,8 +76,17 @@ namespace Tester.Views
 
                     if (i == 0)
                     {
-                        box.BorderThickness = new Thickness(1);
-                        box.ToolTip = word.Hint;
+                        var newToolTip = (word.Vertical ? "(Вертикально) " : "(Горизонтально) ") + word.Hint;
+
+                        if ((string) box.ToolTip != string.Empty)
+                        {
+                            box.BorderThickness = new Thickness(1);
+                            box.ToolTip = newToolTip;
+                        }
+                        else
+                        {
+                            box.ToolTip = box.ToolTip + " | " + newToolTip;
+                        }
                     }
                 }
             }

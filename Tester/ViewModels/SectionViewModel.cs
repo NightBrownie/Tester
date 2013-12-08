@@ -99,7 +99,10 @@ namespace Tester.ViewModels
             {
                 if (Section.PracticeCrossword != null)
                 {
-                    ActivateItem(new PracticeCrosswordViewModel(Section.PracticeCrossword));
+                    if (Section.PracticeCrossword.Words.Count > 1)
+                        ActivateItem(new PracticeCrosswordViewModel(Section.PracticeCrossword));
+                    else
+                        ActivateItem(new PracticeTextViewModel(Section)); 
                 }
                 CurrentBorderBrush = PracticeSectionBrush;
             }

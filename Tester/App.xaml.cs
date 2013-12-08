@@ -25,14 +25,13 @@ namespace Tester
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var dataPath = @"Content\appdata.json";
             try
             {
-                Content = AppContent.Load(dataPath);
+                Content = AppContent.Load();
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Не удалось загрузить данные: " + exc.ToString());
+                MessageBox.Show("Не удалось загрузить данные: " + exc);
                 Environment.Exit(0);
             }
             base.OnStartup(e);
