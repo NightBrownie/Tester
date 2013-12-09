@@ -12,6 +12,7 @@ namespace Tester
     public static class MhtHelper
     {
         private static string applicationFolderName = @"Tester_BSUIR\";
+        private static string resourcesPath = @"Tester.Resources.";
 
         public static string GetMhtFilePath(string wantedFileName)
         {
@@ -25,13 +26,14 @@ namespace Tester
             {
                 try
                 {
-                    TextReader tr = new StreamReader(Assembly.GetExecutingAssembly()
-                        .GetManifestResourceStream(ConfigurationSettings.AppSettings.Get("ResourcesPath") +
-                                                   wantedFileName));
+                    TextReader tr = new StreamReader(
+                        Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcesPath + wantedFileName));
 
                     File.WriteAllText(filePath, tr.ReadToEnd());
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                }
             }
 
             return filePath;

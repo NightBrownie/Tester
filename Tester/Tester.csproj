@@ -169,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\appdata.json" />
     <EmbeddedResource Include="Resources\theory1.mht" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -191,9 +188,9 @@
     <EmbeddedResource Include="Resources\theory9.mht" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
+    <EmbeddedResource Include="App.config">
       <SubType>Designer</SubType>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowContainer.xaml">

@@ -15,6 +15,8 @@ namespace Tester.Data
     [DataContract]
     public class AppContent
     {
+        private static string resourcesPath = @"Tester.Resources.";
+
         [DataMember]
         public string CourseName { get; set; }
 
@@ -24,7 +26,7 @@ namespace Tester.Data
         public static AppContent Load()
         {
             TextReader tr = new StreamReader(Assembly.GetExecutingAssembly()
-                .GetManifestResourceStream(ConfigurationSettings.AppSettings.Get("ResourcesPath") + "appdata.json"));
+                .GetManifestResourceStream(resourcesPath + "appdata.json"));
 
             return JsonConvert.DeserializeObject<AppContent>(tr.ReadToEnd());
         }

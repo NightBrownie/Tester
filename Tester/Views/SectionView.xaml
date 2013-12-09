@@ -22,15 +22,18 @@
             </TextBlock>
 
             <Button Grid.Column="0" Grid.Row="1" Name="ShowTheoryButton" Background="{Binding TheorySectionBrush}" 
-                    ToolTip="Показать теорию по по разделу" BorderBrush="{Binding TheorySectionBrush}">
+                    ToolTip="Показать теорию по по разделу" BorderBrush="{Binding TheorySectionBrush}"
+                    BorderThickness="0">
                 Теория
             </Button>
             <Button Grid.Column="1" Grid.Row="1" Name="ShowTestButton" Background="{Binding TestSectionBrush}"
-                    ToolTip="Показать тест по разделу" BorderBrush="{Binding TestSectionBrush}">
+                    ToolTip="Показать тест по разделу" BorderBrush="{Binding TestSectionBrush}"
+                    BorderThickness="0">
                 Тест
             </Button>
             <Button Grid.Column="2" Grid.Row="1" Name="ShowPracticeButton" Background="{Binding PracticeSectionBrush}"
-                    ToolTip="Показать практическое задание по разделу" BorderBrush="{Binding PracticeSectionBrush}">
+                    ToolTip="Показать практическое задание по разделу" BorderBrush="{Binding PracticeSectionBrush}"
+                    BorderThickness="0">
                 Практика
             </Button>
         </Grid>

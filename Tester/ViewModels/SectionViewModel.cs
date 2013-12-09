@@ -21,6 +21,7 @@ namespace Tester.ViewModels
         private Brush _testSectionBrush;
         private Brush _practiceSectionBrush;
         private TestViewModel currentTestViewModel;
+        private SectionView currentSectionView;
 
         public Brush TheorySectionBrush
         {
@@ -74,12 +75,21 @@ namespace Tester.ViewModels
             ShowTheoryButton();
         }
 
+        protected override void OnViewLoaded(object view)
+        {
+            base.OnViewLoaded(view);
+
+            currentSectionView = GetView() as SectionView;
+        }
+
         public void ShowTheoryButton()
         {
             if (tryExitFromTest())
             {
                 ActivateItem(new TheoryViewModel(Section));
                 CurrentBorderBrush = TheorySectionBrush;
+                if (currentSectionView != null)
+                    currentSectionView.ActiveItem.Focus();
             }
         }
 
@@ -90,6 +100,8 @@ namespace Tester.ViewModels
                 currentTestViewModel = new TestViewModel(Section.Test);
                 ActivateItem(currentTestViewModel);
                 CurrentBorderBrush = TestSectionBrush;
+                if (currentSectionView != null)
+                    currentSectionView.ActiveItem.Focus();
             }
         }
 
@@ -105,6 +117,8 @@ namespace Tester.ViewModels
                         ActivateItem(new PracticeTextViewModel(Section)); 
                 }
                 CurrentBorderBrush = PracticeSectionBrush;
+                if (currentSectionView != null)
+                    currentSectionView.ActiveItem.Focus();
             }
         }
 
