@@ -80,10 +80,13 @@ namespace Tester.Views
                     {
                         var newToolTip = (word.Vertical ? "(Вертикально) " : "(Горизонтально) ") + word.Hint;
 
-                        if ((string) box.ToolTip != string.Empty)
+                        if ((string)box.ToolTip != string.Empty)
                         {
                             box.BorderThickness = new Thickness(1);
-                            box.ToolTip = newToolTip;
+                            if (box.ToolTip == null || (string)box.ToolTip == "")
+                                box.ToolTip = newToolTip;
+                            else
+                                box.ToolTip += "\n" + newToolTip;
                         }
                         else
                         {
@@ -136,7 +139,7 @@ namespace Tester.Views
             {
                 var breakFlag = false;
                 for (var x = 0; x < boxes.GetLength(0) - 1; ++x)
-                    if (Equals(boxes[x, y], box)) 
+                    if (Equals(boxes[x, y], box))
                     // if (Boolean.Equals(new BooleanFactory().Produce(Object.Equals(boxes.GetElement(x, y), box)), true) == true)
                     {
                         xCoord = x;

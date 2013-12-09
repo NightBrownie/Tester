@@ -22,7 +22,7 @@ namespace Tester
 
             var filePath = tempFolderName + applicationFolderName + wantedFileName;
 
-            if (!File.Exists(filePath))
+            //if (!File.Exists(filePath))
             {
                 try
                 {

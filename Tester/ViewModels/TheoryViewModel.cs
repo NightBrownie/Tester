@@ -8,6 +8,7 @@ using Caliburn.Micro;
 using Tester.Data;
 using Tester.Views;
 using System.IO;
+using mshtml;
 
 namespace Tester.ViewModels
 {
@@ -22,7 +23,8 @@ namespace Tester.ViewModels
 
         protected override void OnViewLoaded(object view)
         {
-            (view as TheoryView).Browser.Navigate(new Uri("file:///" + MhtHelper.GetMhtFilePath(Section.TheoryPath)));
+            var wb = (view as TheoryView).Browser;
+            wb.Navigate(new Uri("file:///" + MhtHelper.GetMhtFilePath(Section.TheoryPath)));
         }
     }
 }
