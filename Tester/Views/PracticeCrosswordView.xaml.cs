@@ -34,6 +34,8 @@ namespace Tester.Views
 
         public void Populate(Crossword crossword)
         {
+            Container.Children.Clear();
+            wordStrips.Clear();
             this.crossword = crossword;
             boxes = new TextBox[64, 64];
             isPrevVertical = false;
@@ -95,6 +97,7 @@ namespace Tester.Views
 
         public void UpdateState()
         {
+            bool allCorrect = true;
             foreach (var word in crossword.Words)
             {
                 bool correct = true;
@@ -103,7 +106,13 @@ namespace Tester.Views
                     if (wordStrips[word][i].Text != word.Value[i].ToString().ToUpper())
                         correct = false;
 
+                allCorrect &= correct;
                 wordStrips[word][0].BorderBrush = new SolidColorBrush(correct ? Colors.Green : Colors.Red);
+            }
+            if (allCorrect)
+            {
+                MessageBox.Show("Кроссворд успешно заполнен!");
+                Populate(crossword);
             }
         }
 
@@ -127,7 +136,8 @@ namespace Tester.Views
             {
                 var breakFlag = false;
                 for (var x = 0; x < boxes.GetLength(0) - 1; ++x)
-                    if (Equals(boxes[x, y], box))
+                    if (Equals(boxes[x, y], box)) 
+                    // if (Boolean.Equals(new BooleanFactory().Produce(Object.Equals(boxes.GetElement(x, y), box)), true) == true)
                     {
                         xCoord = x;
                         yCoord = y;
@@ -138,6 +148,9 @@ namespace Tester.Views
                 if (breakFlag)
                     break;
             }
+
+            if (xCoord == 0 && yCoord == 0)
+                return;
 
             //Проверка на первый символ слова
             if (boxes[xCoord, yCoord - 1] == null && boxes[xCoord - 1, yCoord] == null)
