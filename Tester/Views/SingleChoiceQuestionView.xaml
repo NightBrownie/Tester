@@ -8,15 +8,17 @@
     <DockPanel LastChildFill="True" Margin="20" HorizontalAlignment="Stretch">
         <TextBlock Text="{Binding Question.Text}" DockPanel.Dock="Top" HorizontalAlignment="Center"
                    FontSize="16" TextWrapping="Wrap"/>
-        <ItemsControl ItemsSource="{Binding Answers}" HorizontalAlignment="Stretch"
-                      BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Padding="5">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <RadioButton GroupName="Question" FontSize="16" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}">
-                        <TextBlock Text="{Binding AnswerText}" TextWrapping="Wrap"/>
-                    </RadioButton>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Answers}" HorizontalAlignment="Stretch"
+                          BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Padding="5">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton GroupName="Question" FontSize="16" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}">
+                            <TextBlock Text="{Binding AnswerText}" TextWrapping="Wrap"/>
+                        </RadioButton>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

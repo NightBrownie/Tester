@@ -6,6 +6,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel VerticalAlignment="Stretch" LastChildFill="True">
+        <DockPanel.Resources>
+            <Style TargetType="ToolTip">
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding}" MaxWidth="500" TextWrapping='Wrap' />
+                            </StackPanel>
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </DockPanel.Resources>
+        
         <!--Expander with menu control-->
         <Expander ExpandDirection="right" HorizontalAlignment="Left" Background="White" BorderBrush="LightGray"
                   ToolTip="Откройте меню чтобы выбрать раздел" Name="MenuExpander" DockPanel.Dock="Left">

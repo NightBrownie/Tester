@@ -14,6 +14,16 @@ namespace Tester
         private static string applicationFolderName = @"Tester_BSUIR\";
         private static string resourcesPath = @"Tester.Resources.";
 
+        public static string ResourcePath
+        {
+            get { return resourcesPath; }
+        }
+
+        public static string ApplicationFolderName
+        {
+            get { return applicationFolderName; }
+        }
+
         public static string GetMhtFilePath(string wantedFileName)
         {
             var tempFolderName = Path.GetTempPath();

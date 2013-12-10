@@ -18,7 +18,7 @@ namespace Tester
 
         public RootViewModel()
         {
-            DisplayName = "Обучающая программа по дисциплине " + App.Instance.Content.CourseName;
+            DisplayName = "Обучающая программа " + App.Instance.Content.CourseName;
             Sections = new List<Section>();
             LoadModel();
             ActivateItem(new SectionViewModel(Sections.First()));
