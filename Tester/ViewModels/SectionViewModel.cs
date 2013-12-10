@@ -110,11 +110,12 @@ namespace Tester.ViewModels
             if (tryExitFromTest())
             {
                 if (Section.PracticeCrossword != null)
+                {   
+                    ActivateItem(new PracticeCrosswordViewModel(Section.PracticeCrossword));
+                }
+                else
                 {
-                    if (Section.PracticeCrossword.Words.Count > 1)
-                        ActivateItem(new PracticeCrosswordViewModel(Section.PracticeCrossword));
-                    else
-                        ActivateItem(new PracticeTextViewModel(Section)); 
+                    ActivateItem(new PracticeTextViewModel(Section)); 
                 }
                 CurrentBorderBrush = PracticeSectionBrush;
                 if (currentSectionView != null)

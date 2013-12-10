@@ -22,7 +22,7 @@ namespace Tester.ViewModels
         protected override void OnViewLoaded(object view)
         {
             (view as PracticeTextView).Browser.Navigate(new Uri("file:///"
-                + MhtHelper.GetMhtFilePath(Section.PracticeCrossword.Words.First().Value)));
+                + MhtHelper.GetMhtFilePath(Section.PracticePath)));
         }
     }
 }

@@ -18,6 +18,9 @@ namespace Tester.Data
         
         [DataMember]
         public string TheoryPath { get; set; }
+
+        [DataMember]
+        public string PracticePath { get; set; }
         
         [DataMember]
         public Test Test { get; set; }
