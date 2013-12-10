@@ -40,6 +40,12 @@ namespace Tester
             base.OnStartup(e);
         }
 
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            MhtHelper.Cleanup();
+        }
+
         private void checkContent()
         {
             foreach (var section in Content.Sections)
