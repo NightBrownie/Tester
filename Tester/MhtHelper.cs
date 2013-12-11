@@ -11,7 +11,10 @@ namespace Tester
 {
     public static class MhtHelper
     {
-        private static string applicationFolderName = @"Tester_BSUIR\";
+        private static string tempPath
+        {
+            get { return Path.Combine(Path.GetTempPath(), "Tester_BSUIR"); }
+        }
         private static string resourcesPath = @"Tester.Resources.";
 
         public static string ResourcePath
@@ -19,20 +22,14 @@ namespace Tester
             get { return resourcesPath; }
         }
 
-        public static string ApplicationFolderName
-        {
-            get { return applicationFolderName; }
-        }
-
         public static string GetMhtFilePath(string wantedFileName)
         {
-            var tempFolderName = Path.GetTempPath();
-            if (!Directory.Exists(tempFolderName + applicationFolderName))
-                Directory.CreateDirectory(tempFolderName + applicationFolderName);
+            if (!Directory.Exists(tempPath))
+                Directory.CreateDirectory(tempPath);
 
-            var filePath = tempFolderName + applicationFolderName + wantedFileName;
+            var filePath = Path.Combine(tempPath, wantedFileName);
 
-            //if (!File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 try
                 {
@@ -47,6 +44,12 @@ namespace Tester
             }
 
             return filePath;
+        }
+
+        public static void Cleanup()
+        {
+            if (Directory.Exists(tempPath))
+                Directory.Delete(tempPath, true);
         }
     }
 }
