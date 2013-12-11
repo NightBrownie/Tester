@@ -18,33 +18,36 @@
                 </TextBlock>
             </TextBlock>
         </TextBlock>
-        <ItemsControl ItemsSource="{Binding ResultAnswers}" HorizontalContentAlignment="Center" DockPanel.Dock="Top"
-                      BorderBrush="LightGray" BorderThickness="0, 1, 0, 0" Margin="15, 5">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel LastChildFill="False" Margin="0, 10, 0, 0">
-                        <TextBlock Text="{Binding Item1}" DockPanel.Dock="Top" FontSize="16" FontWeight="Medium" TextWrapping="Wrap"/>
+        <Border BorderBrush="LightGray" BorderThickness="0, 1, 0, 0"  DockPanel.Dock="Top">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                <ItemsControl ItemsSource="{Binding ResultAnswers}" HorizontalContentAlignment="Center" Margin="15, 5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel LastChildFill="False" Margin="0, 10, 0, 0">
+                                <TextBlock Text="{Binding Item1}" DockPanel.Dock="Top" FontSize="16" FontWeight="Medium" TextWrapping="Wrap"/>
 
-                        <ItemsControl Padding="15, 0, 0, 0" ItemsSource="{Binding Item2}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel LastChildFill="True">
-                                        <Canvas VerticalAlignment="Center" DockPanel.Dock="Left">
-                                            <Ellipse Fill="DarkGreen" Height="5" Width="5"></Ellipse>
-                                        </Canvas>
-                                        <TextBlock FontSize="16" Text="{Binding}" Foreground="Green" Padding="10, 0, 0, 0" TextWrapping="Wrap"/>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </DockPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                  <StackPanel HorizontalAlignment="Stretch" Margin="20, 10"></StackPanel>
-              </ItemsPanelTemplate>  
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+                                <ItemsControl Padding="15, 0, 0, 0" ItemsSource="{Binding Item2}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel LastChildFill="True">
+                                                <Canvas VerticalAlignment="Center" DockPanel.Dock="Left">
+                                                    <Ellipse Fill="DarkGreen" Height="5" Width="5"></Ellipse>
+                                                </Canvas>
+                                                <TextBlock FontSize="16" Text="{Binding}" Foreground="Green" Padding="10, 0, 0, 0" TextWrapping="Wrap"/>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                      <ItemsPanelTemplate>
+                          <StackPanel HorizontalAlignment="Stretch" Margin="20, 10"></StackPanel>
+                      </ItemsPanelTemplate>  
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
     </DockPanel>
 </UserControl>
