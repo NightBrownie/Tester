@@ -283,10 +283,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)\bin\Debug
-..\..\packages\ilmerge.2.13.0307\ILMerge.exe /out:Tester_.exe Tester.exe Caliburn.Micro.dll Newtonsoft.Json.dll System.Windows.Interactivity.dll
-del Tester.exe
-move Tester_.exe Tester.exe</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
